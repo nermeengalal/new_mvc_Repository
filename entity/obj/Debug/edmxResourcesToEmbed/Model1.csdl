@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TASKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Device_Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK_Devices_Device_Categories" FromRole="Device_Categories" ToRole="Devices" />
+    <NavigationProperty Name="Property_Items" Relationship="Self.FK_Property_Items_Device_Categories" FromRole="Device_Categories" ToRole="Property_Items" />
+  </EntityType>
+  <EntityType Name="Device">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Device_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Device_Categories" Relationship="Self.FK_Devices_Device_Categories" FromRole="Devices" ToRole="Device_Categories" />
+    <NavigationProperty Name="Property_Value" Relationship="Self.FK_Property_Value_Devices" FromRole="Devices" ToRole="Property_Value" />
+  </EntityType>
+  <EntityType Name="Property_Items">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Device_Categories" Relationship="Self.FK_Property_Items_Device_Categories" FromRole="Property_Items" ToRole="Device_Categories" />
+    <NavigationProperty Name="Property_Options" Relationship="Self.FK_Property_Options_Property_Items" FromRole="Property_Items" ToRole="Property_Options" />
+    <NavigationProperty Name="Property_Value" Relationship="Self.FK_Property_Value_Property_Items" FromRole="Property_Items" ToRole="Property_Value" />
+  </EntityType>
+  <EntityType Name="Property_Options">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Propert_ID" Type="Int32" />
+    <NavigationProperty Name="Property_Items" Relationship="Self.FK_Property_Options_Property_Items" FromRole="Property_Options" ToRole="Property_Items" />
+    <NavigationProperty Name="Property_Value_Option" Relationship="Self.FK_Property_Value_Option_Property_Options" FromRole="Property_Options" ToRole="Property_Value_Option" />
+  </EntityType>
+  <EntityType Name="Property_Value">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Device_ID" Type="Int32" Nullable="false" />
+    <Property Name="Property_ID" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Device" Relationship="Self.FK_Property_Value_Devices" FromRole="Property_Value" ToRole="Devices" />
+    <NavigationProperty Name="Property_Items" Relationship="Self.FK_Property_Value_Property_Items" FromRole="Property_Value" ToRole="Property_Items" />
+    <NavigationProperty Name="Property_Value_Option" Relationship="Self.FK_Property_Value_Option_Property_Value" FromRole="Property_Value" ToRole="Property_Value_Option" />
+  </EntityType>
+  <EntityType Name="Property_Value_Option">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Option_ID" Type="Int32" Nullable="false" />
+    <Property Name="Property_Value_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Property_Options" Relationship="Self.FK_Property_Value_Option_Property_Options" FromRole="Property_Value_Option" ToRole="Property_Options" />
+    <NavigationProperty Name="Property_Value" Relationship="Self.FK_Property_Value_Option_Property_Value" FromRole="Property_Value_Option" ToRole="Property_Value" />
+  </EntityType>
+  <Association Name="FK_Devices_Device_Categories">
+    <End Role="Device_Categories" Type="Self.Device_Categories" Multiplicity="1" />
+    <End Role="Devices" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device_Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Items_Device_Categories">
+    <End Role="Device_Categories" Type="Self.Device_Categories" Multiplicity="1" />
+    <End Role="Property_Items" Type="Self.Property_Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device_Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Items">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Value_Devices">
+    <End Role="Devices" Type="Self.Device" Multiplicity="1" />
+    <End Role="Property_Value" Type="Self.Property_Value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Value">
+        <PropertyRef Name="Device_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Options_Property_Items">
+    <End Role="Property_Items" Type="Self.Property_Items" Multiplicity="0..1" />
+    <End Role="Property_Options" Type="Self.Property_Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Items">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Options">
+        <PropertyRef Name="Propert_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Value_Property_Items">
+    <End Role="Property_Items" Type="Self.Property_Items" Multiplicity="1" />
+    <End Role="Property_Value" Type="Self.Property_Value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Items">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Value">
+        <PropertyRef Name="Property_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Value_Option_Property_Options">
+    <End Role="Property_Options" Type="Self.Property_Options" Multiplicity="1" />
+    <End Role="Property_Value_Option" Type="Self.Property_Value_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Options">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Value_Option">
+        <PropertyRef Name="Property_Option_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Value_Option_Property_Value">
+    <End Role="Property_Value" Type="Self.Property_Value" Multiplicity="1" />
+    <End Role="Property_Value_Option" Type="Self.Property_Value_Option" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Value">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Value_Option">
+        <PropertyRef Name="Property_Value_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TASKEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Device_Categories" EntityType="Self.Device_Categories" />
+    <EntitySet Name="Devices" EntityType="Self.Device" />
+    <EntitySet Name="Property_Items" EntityType="Self.Property_Items" />
+    <EntitySet Name="Property_Options" EntityType="Self.Property_Options" />
+    <EntitySet Name="Property_Value" EntityType="Self.Property_Value" />
+    <EntitySet Name="Property_Value_Option" EntityType="Self.Property_Value_Option" />
+    <AssociationSet Name="FK_Devices_Device_Categories" Association="Self.FK_Devices_Device_Categories">
+      <End Role="Device_Categories" EntitySet="Device_Categories" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Items_Device_Categories" Association="Self.FK_Property_Items_Device_Categories">
+      <End Role="Device_Categories" EntitySet="Device_Categories" />
+      <End Role="Property_Items" EntitySet="Property_Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Value_Devices" Association="Self.FK_Property_Value_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="Property_Value" EntitySet="Property_Value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Options_Property_Items" Association="Self.FK_Property_Options_Property_Items">
+      <End Role="Property_Items" EntitySet="Property_Items" />
+      <End Role="Property_Options" EntitySet="Property_Options" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Value_Property_Items" Association="Self.FK_Property_Value_Property_Items">
+      <End Role="Property_Items" EntitySet="Property_Items" />
+      <End Role="Property_Value" EntitySet="Property_Value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Value_Option_Property_Options" Association="Self.FK_Property_Value_Option_Property_Options">
+      <End Role="Property_Options" EntitySet="Property_Options" />
+      <End Role="Property_Value_Option" EntitySet="Property_Value_Option" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Value_Option_Property_Value" Association="Self.FK_Property_Value_Option_Property_Value">
+      <End Role="Property_Value" EntitySet="Property_Value" />
+      <End Role="Property_Value_Option" EntitySet="Property_Value_Option" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

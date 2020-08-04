@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TASKModelStoreContainer" CdmEntityContainer="TASKEntities">
+    <EntitySetMapping Name="Device_Categories">
+      <EntityTypeMapping TypeName="TASKModel.Device_Categories">
+        <MappingFragment StoreEntitySet="Device_Categories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="TASKModel.Device">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Device_Name" ColumnName="Device_Name" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Items">
+      <EntityTypeMapping TypeName="TASKModel.Property_Items">
+        <MappingFragment StoreEntitySet="Property_Items">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Options">
+      <EntityTypeMapping TypeName="TASKModel.Property_Options">
+        <MappingFragment StoreEntitySet="Property_Options">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Propert_ID" ColumnName="Propert_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Value">
+      <EntityTypeMapping TypeName="TASKModel.Property_Value">
+        <MappingFragment StoreEntitySet="Property_Value">
+          <ScalarProperty Name="Device_ID" ColumnName="Device_ID" />
+          <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Value_Option">
+      <EntityTypeMapping TypeName="TASKModel.Property_Value_Option">
+        <MappingFragment StoreEntitySet="Property_Value_Option">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Property_Option_ID" ColumnName="Property_Option_ID" />
+          <ScalarProperty Name="Property_Value_ID" ColumnName="Property_Value_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

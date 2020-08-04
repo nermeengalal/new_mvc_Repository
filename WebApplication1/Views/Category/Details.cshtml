@@ -1,0 +1,58 @@
+﻿@using Services.ViewModels.Category
+@model IEnumerable<Services.ViewModels.PropertyItems.PropertyItemVm>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@(ViewBag.Cat.Category_Name) Details</h2>
+
+<p>
+    @Html.ActionLink("Create Property", "Add", new { Controller = "PropertyItems", CatId = ViewBag.Cat.ID }, new { @class = "btn btn-primary" })
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Property_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Property_Name)
+            </td>
+            <td>
+                @if (item.Type == 1)
+                {
+                    <span> Text Value</span>
+                }
+                else
+                {
+                    <span> Multi Options</span>
+                }
+            </td>
+            <td>
+                @if (item.Type == 2)
+
+                {
+                    @Html.ActionLink("Options", "Options", new { Controller = "PropertyItems", PropId = item.ID }, new { @class = "btn btn-primary" })
+
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+
+    <a href="/Category/List" class="btn btn-primary">Back To List</a>
+</div>

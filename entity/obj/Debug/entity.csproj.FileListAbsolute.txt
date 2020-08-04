@@ -1,0 +1,11 @@
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\entity.dll.config
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\entity.dll
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\entity.pdb
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\EntityFramework.dll
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\EntityFramework.xml
+C:\Users\TheGenius\source\repos\WebApplication1\entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TheGenius\source\repos\WebApplication1\entity\obj\Debug\entity.csproj.CoreCompileInputs.cache
+C:\Users\TheGenius\source\repos\WebApplication1\entity\obj\Debug\entity.csproj.CopyComplete
+C:\Users\TheGenius\source\repos\WebApplication1\entity\obj\Debug\entity.dll
+C:\Users\TheGenius\source\repos\WebApplication1\entity\obj\Debug\entity.pdb

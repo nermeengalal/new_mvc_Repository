@@ -1,0 +1,17 @@
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\servise.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\servise.pdb
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\AutoMapper.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\entity.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\System.ValueTuple.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\EntityFramework.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\entity.pdb
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\entity.dll.config
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\AutoMapper.pdb
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\AutoMapper.xml
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\System.ValueTuple.xml
+C:\Users\TheGenius\source\repos\WebApplication1\servise\bin\Debug\EntityFramework.xml
+C:\Users\TheGenius\source\repos\WebApplication1\servise\obj\Debug\servise.csprojAssemblyReference.cache
+C:\Users\TheGenius\source\repos\WebApplication1\servise\obj\Debug\servise.csproj.CoreCompileInputs.cache
+C:\Users\TheGenius\source\repos\WebApplication1\servise\obj\Debug\servise.csproj.CopyComplete
+C:\Users\TheGenius\source\repos\WebApplication1\servise\obj\Debug\servise.dll
+C:\Users\TheGenius\source\repos\WebApplication1\servise\obj\Debug\servise.pdb
